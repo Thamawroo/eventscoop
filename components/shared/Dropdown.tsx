@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { iCategory } from "@/lib/database/models/category.model";
-import { startTransition, useState } from "react";
+import { ICategory } from "@/lib/database/models/category.model";
+import { startTransition, useEffect, useState } from "react";
 import {
 AlertDialog,
 AlertDialogAction,
@@ -19,6 +19,7 @@ AlertDialogTitle,
 AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input";
+import { createCategory, getAllCategories } from "@/lib/actions/category.actions";
 
 type DropdownProps = {
   value: string;
@@ -26,12 +27,25 @@ type DropdownProps = {
 };
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  const [categories, setCategories] = useState<iCategory[]>([])
+  const [categories, setCategories] = useState<ICategory[]>([])
   const [newCategory, setNewCategory] = useState ('');
   
  const handleAddCategory = () => {
-
+   createCategory({
+    categoryName: newCategory.trim()
+   })
+    .then((category) => {
+      setCategories((prevState) => [...prevState, category])
+    })
  }
+
+ useEffect(() => {
+  const getCategories = async () => {
+    const categoryList = await getAllCategories();
+
+    categoryList && setCategories(categoryList as ICategory[])
+  }
+ }, [])
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
@@ -46,10 +60,10 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
         ))}
 
 <AlertDialog>
-  <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-sky-600 hover:bg-sky-100 focus:text-sky-600">Open</AlertDialogTrigger>
+  <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-sky-600 hover:bg-sky-100 focus:text-sky-600">Tambah Kategori Baru</AlertDialogTrigger>
   <AlertDialogContent className="bg-zinc-50">
     <AlertDialogHeader>
-      <AlertDialogTitle>New Category</AlertDialogTitle>
+      <AlertDialogTitle>Kategori Baru</AlertDialogTitle>
       <AlertDialogDescription>
        <Input type="text" placeholder="Category name"
        className="input-field mt-3" onChange={(e) => setNewCategory (e.target.value)} />
