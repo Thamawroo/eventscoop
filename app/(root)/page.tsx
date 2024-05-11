@@ -1,8 +1,19 @@
+import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import { getAllEvents } from "@/lib/actions/event.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const events = await getAllEvents({
+    query: '',
+    category: '',
+    page: 1,
+    limit: 6
+  });
+
+  console.log(events)
+
   return (
     <>
     <section className="bg-amber-100 bg-dotted-pattern bg-contain py-5 md:py-10">
@@ -28,12 +39,27 @@ export default function Home() {
     </section>  
    
     <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-      <h2 className="h2-bold">Dipercaya oleh <br /> Promotor Top Indonesia</h2>
+      <h2 className="h2-bold mb-[-40px]">Acara Mendatang</h2>
+      <h2 className="text-slate-600 text-2xl">Berikut adalah berbagai event terbaru kami, salah satunya mungkin menarik minatmu</h2>
 
       <div className="flex w-full flex-col gap-5 md:flex-row">
         Search
-        CategoryFilter
+        {' '}
+        Category
+        {' '}
+        Filter
+        {' '}
       </div>
+
+      <Collection
+      data={events?.data}
+      emptyTitle="Tidak Ada Event"
+      emptyStateSubtext="Kembali Lagi Nanti"
+      collectionType="All_Events"
+      limit={6}
+      page={1}
+      totalPages={2}
+      />
     </section>
   
     </>

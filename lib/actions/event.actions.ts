@@ -1,6 +1,6 @@
 "use server";
 
-import { CreateEventParams } from "@/types";
+import { CreateEventParams, GetAllEventsParams } from "@/types";
 import { handleError } from "../utils";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
@@ -9,9 +9,13 @@ import Category from "../database/models/category.model";
 
 const populateEvent = async (query: any) => {
   return query
-  .populate({ path: 'organizer', model: User, select: '_id firstName lastName' })
-  .populate({ path: 'category', model: Category, select: '_id name' })
-}
+    .populate({
+      path: "organizer",
+      model: User,
+      select: "_id firstName lastName",
+    })
+    .populate({ path: "category", model: Category, select: "_id name" });
+};
 
 export const createEvent = async ({
   event,
@@ -46,7 +50,7 @@ export const getEventById = async (eventId: string) => {
 
     const event = await populateEvent(Event.findById(eventId));
 
-    if(!event) {
+    if (!event) {
       throw new Error("Event not found");
     }
 
@@ -54,4 +58,32 @@ export const getEventById = async (eventId: string) => {
   } catch (error) {
     handleError(error);
   }
-}
+};
+
+export const getAllEvents = async ({
+  query,
+  limit = 6,
+  page,
+  category,
+}: GetAllEventsParams) => {
+  try {
+    await connectToDatabase();
+
+    const condition = {};
+
+    const eventsQuery = Event.find(condition)
+    .sort({ createdAt: 'desc' })
+    .skip(0)
+    .limit(limit);
+
+    const events = await populateEvent(eventsQuery);
+    const eventsCount = await Event.countDocuments(condition);
+
+    return {
+      data: JSON.parse(JSON.stringify(events)),
+      totalPages: Math.ceil(eventsCount / limit)
+    }
+  } catch (error) {
+    handleError(error);
+  }
+};
