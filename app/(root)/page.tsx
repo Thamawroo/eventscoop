@@ -19,9 +19,9 @@ export default async function Home() {
     <section className="bg-amber-100 bg-dotted-pattern bg-contain py-5 md:py-10">
       <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
       <div className="flex flex-col justify-center gap-10">
-       <h1 className="h1-bold">Pesta? Konser? Seminar? Temukan Keajaiban pada Setiap Acara di Platform kami.
+       <h1 className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-green-400 h1-bold inline-block text-transparent bg-clip-text ">Pesta? Konser? Seminar? Temukan Keajaiban pada Setiap Acara di Platform kami.
        </h1>
-       <p className="p-regular-20 md:p-regular-24">Ayo Bergabung dalam Kegembiraan. Biar Kami Yang Mengatur, Kamu Yang Menikmati Event Pilihanmu!</p>
+       <p className="p-regular-20 md:p-regular-24 text-slate-500">Ayo Bergabung dalam Kegembiraan. Biar Kami Yang Mengatur, Kamu Yang Menikmati Event Pilihanmu!</p>
        <Button size="lg" asChild className="button w-full sm:w-fit bg-green-400">
         <Link href="#events">
           Jelajahi Sekarang
@@ -39,8 +39,8 @@ export default async function Home() {
     </section>  
    
     <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-      <h2 className="h2-bold mb-[-40px]">Acara Mendatang</h2>
-      <h2 className="text-slate-600 text-2xl">Berikut adalah berbagai event terbaru kami, salah satunya mungkin menarik minatmu</h2>
+      <h2 className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-green-400 h2-bold inline-block text-transparent bg-clip-text mb-[-40px]">Acara Mendatang</h2>
+      <h2 className="text-2xl text-slate-500">Berikut adalah berbagai event terbaru kami, salah satunya mungkin menarik minatmu</h2>
 
       <div className="flex w-full flex-col gap-5 md:flex-row">
         Search
