@@ -39,7 +39,7 @@ export default async function Home() {
     </section>  
    
     <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-      <h2 className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-green-400 h2-bold inline-block text-transparent bg-clip-text mb-[-40px]">Acara Mendatang</h2>
+      <h2 className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-green-400 h2-bold inline-block text-transparent bg-clip-text mb-[-30px]">Acara Mendatang</h2>
       <h2 className="text-2xl text-slate-500">Berikut adalah berbagai event terbaru kami, salah satunya mungkin menarik minatmu</h2>
 
       <div className="flex w-full flex-col gap-5 md:flex-row">
