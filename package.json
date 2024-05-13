@@ -20,7 +20,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@stripe/stripe-js": "^3.4.0",
     "@types/react-datepicker": "^6.2.0",
-    "@uploadthing/react": "^6.5.1",
+    "@uploadthing/react": "^6.5.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.372.0",
@@ -36,7 +36,7 @@
     "svix": "^1.21.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^6.10.1",
+    "uploadthing": "^6.10.3",
     "zod": "^3.23.4"
   },
   "devDependencies": {
