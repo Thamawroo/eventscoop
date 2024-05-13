@@ -12,8 +12,10 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left ">Orders</h3>
+      <section className=" bg-amber-100 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <div className="wrapper flex items-center justify-center sm:justify-between">
+        <h3 className="wrapper h3-bold text-center sm:text-left bg-gradient-to-r from-emerald-300 via-cyan-300 to-green-400 inline-block text-transparent bg-clip-text">Orders</h3>
+        </div>
       </section>
 
       <section className="wrapper mt-8">
@@ -23,7 +25,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
       <section className="wrapper overflow-x-auto">
         <table className="w-full border-collapse border-t">
           <thead>
-            <tr className="p-medium-14 border-b text-grey-500">
+            <tr className="p-medium-14 border-b text-slate-600">
               <th className="min-w-[250px] py-3 text-left">Order ID</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">Event Title</th>
               <th className="min-w-[150px] py-3 text-left">Buyer</th>
